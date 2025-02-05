@@ -237,7 +237,7 @@ function AdminDashboard() {
       const userData = JSON.parse(atob(token.split(".")[1])); // Decode JWT token
 
       // Check if the userId and email match the specified ones
-      if (userData.userId !== "67a3b8b7c5aa22af2e2bc864" || userData.email !== "baban@gmail.com") {
+      if (userData.userId !== "67a3b8b7c5aa22af2e2bc864" ) {
         // Not the correct user, redirect to Unauthorized page
         navigate("/unauthorized");
       }
