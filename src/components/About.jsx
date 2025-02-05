@@ -113,7 +113,7 @@
 
 
 import React, { useState, useEffect } from "react";
-// import { Helmet } from "react-helmet"; // Import Helmet here
+import { Helmet } from "react-helmet"; // Import Helmet here
 
 const About = () => {
   const [team, setTeam] = useState([]);
