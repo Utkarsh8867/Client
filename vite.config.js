@@ -14,6 +14,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',  // Exposes the server
     port: 5173,       // Change if needed
+      allowedHosts: ['client-s2tr.onrender.com'],
   },
 });
 
