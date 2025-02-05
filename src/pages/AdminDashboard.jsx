@@ -449,7 +449,7 @@ function AdminDashboard() {
       try {
         const userData = JSON.parse(atob(token.split(".")[1])); // Decode JWT token
 
-        if (userData.userId !== "67a3b8b7c5aa22af2e2bc864" || userData.email !== "baban@gmail.com") {
+        if (userId !== "67a3b8b7c5aa22af2e2bc864" ) {
           navigate("/unauthorized");
         }
       } catch (error) {
