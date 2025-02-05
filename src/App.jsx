@@ -154,8 +154,8 @@ import Unauthorized from './components/Unautorise.jsx';
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 import OrderedList from './components/OrderedList.jsx';
 import Services from './pages/Service.jsx';
-import { Import } from 'lucide-react';
-import { configDotenv } from 'dotenv';
+// import { Import } from 'lucide-react';
+// import { configDotenv } from 'dotenv';
 // Import configDotenv
 
 const App = () => {
