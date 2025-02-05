@@ -541,7 +541,7 @@ import { useNavigate } from "react-router-dom";  // Import useNavigate for redir
 import { toast, ToastContainer } from "react-toastify";  // Import toast from react-toastify
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for react-toastify
 
-const Register = () => {
+const Registration = () => {
   const [isRegistering, setIsRegistering] = useState(true);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -781,5 +781,5 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Registration;
 
