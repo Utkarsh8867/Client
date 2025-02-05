@@ -129,6 +129,10 @@ const Registration = () => {
     setConfirmPassword("");
   };
 
+    const handleLoginRedirect = () => {
+    navigate('/login'); // Navigate to /login path
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -296,7 +300,7 @@ const Registration = () => {
         <div className="text-center mt-4">
           <button
             className="text-blue-500 hover:underline"
-            onClick={switchMode}
+            onClick={handleLoginRedirect}
           >
             {isRegistering
               ? "Already have an account? Login"
