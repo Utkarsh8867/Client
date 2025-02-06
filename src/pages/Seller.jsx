@@ -1453,7 +1453,7 @@ export default function SellerDashboard() {
                     {orders.map((order) => (
                       <tr key={order._id} className="hover:bg-gray-100">
                         <td className="border border-gray-300 p-2">{order._id}</td>
-                        <td className="border border-gray-300 p-2">{order.customer || "Unknown"}</td>
+                        <td className="border border-gray-300 p-2">{order.user?.name || "Unknown"}</td>
                         <td className="border border-gray-300 p-2">₹{order.totalPrice}</td>
                         <td className="border border-gray-300 p-2">{order.status}</td>
                         <td className="border border-gray-300 p-2">{new Date(order.createdAt).toLocaleDateString()}</td>
