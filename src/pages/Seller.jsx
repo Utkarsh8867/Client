@@ -714,7 +714,7 @@ export default function SellerDashboard() {
   // Fetch all products for the seller
   const fetchProducts = async () => {
     try {
-      const res = await fetch(`https://server-fmp.onrender.com/api/v2/product/get-all-products-shop/${shopId}`);
+      const res = await fetch(`https://server-fmp.onrender.com/api/v2/product/get-all-products`);
       if (!res.ok) throw new Error("Failed to fetch products");
       const data = await res.json();
       setProducts(data.products || []);
@@ -925,6 +925,26 @@ export default function SellerDashboard() {
             {featuredProducts.length > 0 ? (
               <div className="grid grid-cols-3 gap-4">
                 {featuredProducts.map((product) => (
+                  <div key={product._id} className="p-4 border rounded">
+                    <img src={product.image} alt={product.name} className="w-full h-40 object-cover mb-2" />
+                    <h3 className="font-semibold">{product.name}</h3>
+                    <p className="text-gray-500">{product.category}</p>
+                    <p className="text-gray-700">₹{product.discountPrice}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>No featured products available.</p>
+            )}
+          </div>
+        )}
+        {activeTab === "Products" && (
+          <div>
+            <h2 className="text-xl font-bold mb-4">All Products</h2>
+            {/* Featured Products */}
+            {fetchProducts.length > 0 ? (
+              <div className="grid grid-cols-3 gap-4">
+                {fetchProducts.map((product) => (
                   <div key={product._id} className="p-4 border rounded">
                     <img src={product.image} alt={product.name} className="w-full h-40 object-cover mb-2" />
                     <h3 className="font-semibold">{product.name}</h3>
