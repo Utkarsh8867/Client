@@ -1483,7 +1483,7 @@ export default function SellerDashboard() {
             <div className="bg-white p-6 rounded-lg w-1/2">
               <h2 className="text-2xl font-bold mb-4">Order Details</h2>
               <p><strong>Order ID:</strong> {selectedOrder._id}</p>
-              <p><strong>Customer:</strong> {selectedOrder.customer || "Rohan"}</p>
+              <p><strong>Customer:</strong> {selectedOrder.customer || "Unknown"}</p>
               <p><strong>Status:</strong> {selectedOrder.status}</p>
               <p><strong>Total Price:</strong> ₹{selectedOrder.totalPrice}</p>
               <p><strong>Date:</strong> {new Date(selectedOrder.createdAt).toLocaleDateString()}</p>
