@@ -308,7 +308,7 @@ const Login = () => {
 
         // Adding the special condition for admin user
         if (userId === "67a3b8b7c5aa22af2e2bc864" && formData.email === "baban@gmail.com") {
-          navigate("/Admindashboard"); // Redirect to admin dashboard
+          navigate("/sellerDashboard"); // Redirect to admin dashboard
         } else if (role === "user") {
           navigate("/Landingpage");
         } else if (role === "admin") {
