@@ -1194,6 +1194,10 @@ export default function SellerDashboard() {
     image: "",
   });
 
+   const [selectedOrder, setSelectedOrder] = useState(null); // For storing selected order details
+  const [isModalOpen, setIsModalOpen] = useState(false); // For controlling modal visibility
+
+
   // Replace with dynamic userId and shopId retrieval logic
   const userId = localStorage.getItem("userId") || "USER_ID_HERE";
   const shopId = localStorage.getItem("shopId") || "67914202230954caf891b880";
