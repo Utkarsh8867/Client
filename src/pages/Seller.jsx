@@ -1431,9 +1431,8 @@ export default function SellerDashboard() {
           </div>
         )}
 
-        {/* Orders Section */}
-        {/* Orders Section */}
-        {activeTab === "orders" && (
+       {/* Orders Section */}
+      {activeTab === "orders" && (
           <div>
             <h2 className="text-xl font-bold mb-4">Orders</h2>
             {/* Order Table */}
@@ -1454,16 +1453,12 @@ export default function SellerDashboard() {
                     {orders.map((order) => (
                       <tr key={order._id} className="hover:bg-gray-100">
                         <td className="border border-gray-300 p-2">{order._id}</td>
-                        <td className="border border-gray-300 p-2">{order.user?.name || "Rohan"}</td>
+                        <td className="border border-gray-300 p-2">{order.customer || "Unknown"}</td>
                         <td className="border border-gray-300 p-2">₹{order.totalPrice}</td>
                         <td className="border border-gray-300 p-2">{order.status}</td>
                         <td className="border border-gray-300 p-2">{new Date(order.createdAt).toLocaleDateString()}</td>
                         <td className="border border-gray-300 p-2">
-                          <button
-                            // Open modal with order details
-                          >
-                            View
-                          </button>
+                          <button className="text-blue-500">View</button>
                         </td>
                       </tr>
                     ))}
@@ -1475,6 +1470,7 @@ export default function SellerDashboard() {
             )}
           </div>
         )}
+
 
         {/* Modal for Viewing Order Details */}
       
@@ -1501,27 +1497,7 @@ export default function SellerDashboard() {
           </div>
         )}
 
-        {activeTab === "Product" && (
-  <div>
-    <h2 className="text-xl font-bold mb-4">All Products</h2>
-    {/* Featured Products */}
-    {products.length > 0 ? (  {/* Use products, not fetchProducts */}
-      <div className="grid grid-cols-3 gap-4">
-        {products.map((product) => (  {/* Use products instead of fetchProducts */}
-          <div key={product._id} className="p-4 border rounded">
-            <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded mb-4" />
-            <h3 className="text-lg font-semibold">{product.name}</h3>
-            <p>{product.description}</p>
-            <p className="mt-2">₹{product.discountPrice}</p>
-          </div>
-        ))}
-      </div>
-    ) : (
-      <p>No featured products available.</p>
-    )}
-  </div>
-)}
-
+       
       </div>
     </div>
   );
