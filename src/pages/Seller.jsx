@@ -1460,8 +1460,7 @@ export default function SellerDashboard() {
                         <td className="border border-gray-300 p-2">{new Date(order.createdAt).toLocaleDateString()}</td>
                         <td className="border border-gray-300 p-2">
                           <button
-                            className="text-blue-500"
-                            onClick={() => handleViewOrder(order)} // Open modal with order details
+                            // Open modal with order details
                           >
                             View
                           </button>
@@ -1478,36 +1477,7 @@ export default function SellerDashboard() {
         )}
 
         {/* Modal for Viewing Order Details */}
-        {isModalOpen && selectedOrder && (
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-lg w-1/2">
-              <h2 className="text-2xl font-bold mb-4">Order Details</h2>
-              <p><strong>Order ID:</strong> {selectedOrder._id}</p>
-              <p><strong>Customer:</strong> {selectedOrder.customer || "Unknown"}</p>
-              <p><strong>Status:</strong> {selectedOrder.status}</p>
-              <p><strong>Total Price:</strong> ₹{selectedOrder.totalPrice}</p>
-              <p><strong>Date:</strong> {new Date(selectedOrder.createdAt).toLocaleDateString()}</p>
-
-              {/* List ordered products */}
-              <h3 className="mt-4 font-semibold">Ordered Products:</h3>
-              <ul>
-                {selectedOrder.products.map((product) => (
-                  <li key={product._id}>
-                    <p>{product.name} (Quantity: {product.quantity})</p>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Close Button */}
-              <button
-                className="mt-4 bg-blue-500 text-white p-2 rounded"
-                onClick={handleCloseModal}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
+      
 
         {/* Featured Products Section */}
         {activeTab === "featuredProduct" && (
