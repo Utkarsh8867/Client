@@ -1483,7 +1483,7 @@ export default function SellerDashboard() {
             <div className="bg-white p-6 rounded-lg w-1/2">
               <h2 className="text-2xl font-bold mb-4">Order Details</h2>
               <p><strong>Order ID:</strong> {selectedOrder._id}</p>
-              <p><strong>Customer:</strong> {selectedOrder.customer || "Unknown"}</p>
+              <p><strong>Customer:</strong> {selectedOrder.user?.namer || "Rohan"}</p>
               <p><strong>Status:</strong> {selectedOrder.status}</p>
               <p><strong>Total Price:</strong> ₹{selectedOrder.totalPrice}</p>
               <p><strong>Date:</strong> {new Date(selectedOrder.createdAt).toLocaleDateString()}</p>
@@ -1532,25 +1532,26 @@ export default function SellerDashboard() {
         )}
 
         {activeTab === "Product" && (
-          <div>
-            <h2 className="text-xl font-bold mb-4">Featured Products</h2>
-            {/* Featured Products */}
-            {fetchProducts.length > 0 ? (
-              <div className="grid grid-cols-3 gap-4">
-                {fetchProducts.map((product) => (
-                  <div key={product._id} className="p-4 border rounded">
-                    <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded mb-4" />
-                    <h3 className="text-lg font-semibold">{product.name}</h3>
-                    <p>{product.description}</p>
-                    <p className="mt-2">₹{product.discountPrice}</p>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p>No featured products available.</p>
-            )}
+  <div>
+    <h2 className="text-xl font-bold mb-4">All Products</h2>
+    {/* Featured Products */}
+    {products.length > 0 ? (  {/* Use products, not fetchProducts */}
+      <div className="grid grid-cols-3 gap-4">
+        {products.map((product) => (  {/* Use products instead of fetchProducts */}
+          <div key={product._id} className="p-4 border rounded">
+            <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded mb-4" />
+            <h3 className="text-lg font-semibold">{product.name}</h3>
+            <p>{product.description}</p>
+            <p className="mt-2">₹{product.discountPrice}</p>
           </div>
-        )}
+        ))}
+      </div>
+    ) : (
+      <p>No featured products available.</p>
+    )}
+  </div>
+)}
+
       </div>
     </div>
   );
