@@ -231,9 +231,7 @@ const OrderDetailsPage = () => {
                             <p className="text-lg"><strong>Description:</strong> {item.productId.description}</p>
                             <p className="text-lg"><strong>Price:</strong> ₹{item.price}</p>
                             <p className="text-lg"><strong>Quantity:</strong> {item.quantity}</p>
-                            <p className="text-lg"><strong>Shop:</strong> {item.productId.shop.name}</p>
-                            <p className="text-lg"><strong>Shop Location:</strong> {item.productId.shop.location}</p>
-                            <p className="text-lg"><strong>Shop Contact:</strong> {item.productId.shop.contact}</p>
+                           
                         </div>
                     ))}
                 </div>
