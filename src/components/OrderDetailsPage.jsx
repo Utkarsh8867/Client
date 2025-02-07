@@ -162,7 +162,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const OrderDetailsPage = () => {
-    const [order, setOrder] = useState(null);
+    const [order, setOrder] = useState({ cart: [] });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
