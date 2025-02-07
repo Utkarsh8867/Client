@@ -1360,6 +1360,10 @@ export default function SellerDashboard() {
     setSelectedOrder(null);
   };
 
+   const handleNavigate = () => {
+        navigate("/OrderDetailsPage");
+    };
+
   return (
     <div className="flex">
       {/* Sidebar */}
@@ -1458,7 +1462,9 @@ export default function SellerDashboard() {
                         <td className="border border-gray-300 p-2">{order.status}</td>
                         <td className="border border-gray-300 p-2">{new Date(order.createdAt).toLocaleDateString()}</td>
                         <td className="border border-gray-300 p-2">
-                          <button className="text-blue-500">View</button>
+                          <button onClick={handleNavigate} className="text-blue-500">
+                              View
+                          </button>
                         </td>
                       </tr>
                     ))}
