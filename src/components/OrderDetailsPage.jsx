@@ -5,6 +5,8 @@ const OrderDetailsPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+      const userId = localStorage.getItem("userId") || "USER_ID_HERE";
+
     useEffect(() => {
         fetch(`https://server-fmp.onrender.com/api/v2/order/api/cart/${userId}`)
             .then((res) => {
