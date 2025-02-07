@@ -105,7 +105,7 @@ const Landingpage = () => {
   return (
     <div className="min-h-screen bg-black">
       {/* Slider Section */}
-{/*       <section className="bg-black py-6">
+      <section className="bg-black py-6">
         <div className="container mx-auto">
           <Slider {...sliderSettings}>
             {bannerImages.map((image, index) => (
@@ -116,26 +116,7 @@ const Landingpage = () => {
           </Slider>
         </div>
       </section>
- */}
 
-
-        <section className="bg-black py-6">
-  <div className="container mx-auto">
-    <Slider {...sliderSettings}>
-      {bannerImages.map((image, index) => (
-        <div key={index}>
-          <img
-            src={image}
-            alt={`Banner ${index + 1}`}
-            className="w-full h-96 md:h-80 sm:h-64 xs:h-48 object-cover rounded-lg shadow-md"
-          />
-        </div>
-      ))}
-    </Slider>
-  </div>
-</section>
-
-    
       {/* Shop by Categories Section */}
       <section className="bg-black py-6">
         <div className="container mx-auto">
