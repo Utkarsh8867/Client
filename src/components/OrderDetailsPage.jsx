@@ -6,7 +6,7 @@ const OrderDetailsPage = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/v2/order/api/cart/6797111c7f02e73f80539766")
+        fetch(`https://server-fmp.onrender.com/api/v2/order/api/cart/${userId}`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error("Failed to fetch orders");
