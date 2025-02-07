@@ -154,6 +154,7 @@ import Unauthorized from './components/Unautorise.jsx';
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 import OrderedList from './components/OrderedList.jsx';
 import Services from './pages/Service.jsx';
+import OrderDetailsPage from './components/OrderDetailsPage.jsx';
 // import { Import } from 'lucide-react';
 // import { configDotenv } from 'dotenv';
 // Import configDotenv
@@ -192,6 +193,7 @@ const App = () => {
             <Route path="unauthorized" element={<Unauthorized />} />
             <Route path="contact" element={<Contact />} />
             <Route path="OrderedList" element={<OrderedList />} />
+            <Route path="OrderDetailsPage" element={<OrderDetailsPage />} />
             <Route path="services" element={<Services />} />
           </Route>
         </Routes>
