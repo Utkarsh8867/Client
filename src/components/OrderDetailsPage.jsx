@@ -176,7 +176,7 @@ const OrderDetailsPage = () => {
             return;
         }
 
-        fetch(`https://server-fmp.onrender.com/api/v2/order/${orderId}`)
+        fetch(`https://server-fmp.onrender.com/api/v2/order/api/order/${orderId}`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error("Failed to fetch order details");
