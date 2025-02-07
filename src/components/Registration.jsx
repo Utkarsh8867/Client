@@ -345,7 +345,7 @@ const Registration = ({ onClose }) => {
       }
     } catch (error) {
       console.error("Error during registration:", error);
-      toast.error("Something went wrong. Please try again later.");
+      // toast.error("Something went wrong. Please try again later.");
     }
   };
 
