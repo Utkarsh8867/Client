@@ -31,7 +31,7 @@ const CartPage = () => {
                     toast.error("Failed to fetch cart");
                 }
             } catch (error) {
-                toast.error("Error fetching cart");
+                toast.error("Cart is Empty");
             }
         };
 
