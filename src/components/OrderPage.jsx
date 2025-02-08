@@ -163,7 +163,7 @@ const OrderPage = () => {
             <button
               onClick={() =>
                 window.location.href =
-                  "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7NE40656506492727"
+                  "https://www.paypal.com/signin"
               }
               disabled={!selectedAddress}
               className="w-full mt-4 p-3 bg-blue-500 text-white rounded-lg disabled:bg-gray-300 disabled:cursor-not-allowed"
