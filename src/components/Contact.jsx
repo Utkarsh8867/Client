@@ -1,32 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import FarmerImage from '../assets/FarmerImage.jpg';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+  const formRef = useRef();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
   });
+
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setForm({ ...form, [name]: value });
+
+    // Clear error as user types
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const handleSubmit = async (e) => {
+  const validateForm = () => {
+    const newErrors = {};
+    if (!form.name.trim()) newErrors.name = "Name is required.";
+    if (!form.email.trim()) newErrors.email = "Email is required.";
+    else if (!/\S+@\S+\.\S+/.test(form.email))
+      newErrors.email = "Email format is invalid.";
+    if (!form.message.trim()) newErrors.message = "Message is required.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      toast.success("Message sent successfully!");
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      console.error('Error:', error);
-      toast.error("Failed to send message");
-    }
+
+    if (!validateForm()) return;
+
+    setLoading(true);
+
+    emailjs
+      .send(
+        "service_lwe5cgt",
+        "template_089y70x",
+        {
+          from_name: form.name,
+          to_name: "JavaScript Mastery",
+          from_email: form.email,
+          to_email: "sujata@jsmastery.pro",
+          message: form.message,
+        },
+        "dZdGk1I0UOX5FnUgw"
+      )
+      .then(
+        () => {
+          setLoading(false);
+          toast.success("Thank you. I will get back to you as soon as possible.");
+          setForm({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          setLoading(false);
+          console.error(error);
+          toast.error("Ahh, something went wrong. Please try again.");
+        }
+      );
   };
 
   return (
@@ -143,12 +185,13 @@ const Contact = () => {
                   type="text"
                   id="name"
                   name="name"
-                  value={formData.name}
+                  value={form.name}
                   onChange={handleChange}
                   className="w-full bg-gray-700/50 text-gray-100 border-2 border-gray-600 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-300"
                   placeholder="Enter your full name"
                   required
                 />
+                {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
               </motion.div>
 
               <motion.div
@@ -163,33 +206,16 @@ const Contact = () => {
                   type="email"
                   id="email"
                   name="email"
-                  value={formData.email}
+                  value={form.email}
                   onChange={handleChange}
                   className="w-full bg-gray-700/50 text-gray-100 border-2 border-gray-600 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-300"
                   placeholder="Enter your email address"
                   required
                 />
+                {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-              >
-                <label htmlFor="subject" className="block text-sm font-semibold text-gray-300 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full bg-gray-700/50 text-gray-100 border-2 border-gray-600 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-300"
-                  placeholder="What's this about?"
-                  required
-                />
-              </motion.div>
+
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -203,17 +229,19 @@ const Contact = () => {
                   id="message"
                   name="message"
                   rows="5"
-                  value={formData.message}
+                  value={form.message}
                   onChange={handleChange}
                   className="w-full bg-gray-700/50 text-gray-100 border-2 border-gray-600 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-300 resize-none"
                   placeholder="Tell us more about your inquiry..."
                   required
                 ></textarea>
+                {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
               </motion.div>
 
               <motion.button
                 type="submit"
-                className="w-full bg-gradient-to-r from-emerald-500 to-green-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:from-emerald-600 hover:to-green-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                disabled={loading}
+                className="w-full bg-gradient-to-r from-emerald-500 to-green-500 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:from-emerald-600 hover:to-green-600 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -221,7 +249,7 @@ const Contact = () => {
                 transition={{ delay: 1, duration: 0.5 }}
               >
                 <FaPaperPlane className="text-lg" />
-                <span>Send Message</span>
+                <span>{loading ? "Sending..." : "Send Message"}</span>
               </motion.button>
             </form>
           </motion.div>
